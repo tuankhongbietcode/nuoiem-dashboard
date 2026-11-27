@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1406 950" width="1406" height="950" role="img" aria-labelledby="schema-title schema-desc">
+<title id="schema-title">Sơ đồ CSDL — luồng dữ liệu Quỹ Minh Bạch Tài Chính (Topic 4)</title>
+<desc id="schema-desc">16 bảng của SQLite, nhóm theo 4 vùng: dữ liệu tham chiếu, giao dịch ngân hàng, đối soát &amp; giải ngân, quản trị &amp; giám sát. Mũi tên liền là khóa ngoại thật; mũi tên đứt là luồng nghiệp vụ không có khóa ngoại.</desc>
+<rect x="0" y="0" width="1406" height="950" fill="#f7f8fa" />
+<defs>
+<marker id="arrow-solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5d6675" /></marker>
+<marker id="arrow-dash" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6a4c93" /></marker>
+</defs>
+<text x="50" y="30" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="19" font-weight="700" fill="#1c2330">Sơ đồ CSDL — luồng dữ liệu hệ thống Quỹ Minh Bạch Tài Chính</text>
+<text x="50" y="50" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12.5" fill="#5d6675">16 bảng · schema.py v2.0 · liền = khóa ngoại thật · đứt = luồng nghiệp vụ (không khóa ngoại)</text>
+<rect x="50" y="64" width="14" height="14" rx="3" fill="#2a6fb0" />
+<text x="70" y="75" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#1c2330">Dữ liệu tham chiếu</text>
+<rect x="266" y="64" width="14" height="14" rx="3" fill="#d2601f" />
+<text x="286" y="75" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#1c2330">Giao dịch ngân hàng</text>
+<rect x="491" y="64" width="14" height="14" rx="3" fill="#146b45" />
+<text x="511" y="75" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#1c2330">Đối soát &amp; giải ngân</text>
+<rect x="725" y="64" width="14" height="14" rx="3" fill="#6a4c93" />
+<text x="745" y="75" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#1c2330">Quản trị &amp; giám sát</text>
+<line x1="1126" y1="71" x2="1154" y2="71" stroke="#5d6675" stroke-width="2" marker-end="url(#arrow-solid)" />
+<text x="1162" y="75" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#1c2330">khóa ngoại</text>
+<line x1="1246" y1="71" x2="1274" y2="71" stroke="#6a4c93" stroke-width="2" stroke-dasharray="2 3" marker-end="url(#arrow-dash)" />
+<text x="1282" y="75" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#1c2330">luồng nghiệp vụ</text>
+<rect x="36.0" y="262.0" width="242.0" height="466.0" rx="14" fill="#e8eff8" stroke="#2a6fb0" stroke-opacity="0.35" stroke-width="1.5" />
+<text x="50.0" y="282.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12.5" font-weight="700" fill="#2a6fb0">DỮ LIỆU THAM CHIẾU</text>
+<rect x="400.0" y="374.0" width="242.0" height="242.0" rx="14" fill="#fdeee1" stroke="#d2601f" stroke-opacity="0.35" stroke-width="1.5" />
+<text x="414.0" y="394.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12.5" font-weight="700" fill="#d2601f">GIAO DỊCH NGÂN HÀNG</text>
+<rect x="764.0" y="318.0" width="242.0" height="354.0" rx="14" fill="#e6f4ed" stroke="#146b45" stroke-opacity="0.35" stroke-width="1.5" />
+<text x="778.0" y="338.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12.5" font-weight="700" fill="#146b45">ĐỐI SOÁT &amp; GIẢI NGÂN</text>
+<rect x="1128.0" y="94.0" width="242.0" height="802.0" rx="14" fill="#efe9f5" stroke="#6a4c93" stroke-opacity="0.35" stroke-width="1.5" />
+<text x="1142.0" y="114.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12.5" font-weight="700" fill="#6a4c93">QUẢN TRỊ &amp; GIÁM SÁT</text>
+<path d="M 157.0 408.0 L 157.0 382.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 157.0 632.0 L 157.0 494.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 157.0 632.0 L 157.0 606.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 521.0 520.0 L 521.0 494.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 414.0 563.0 C 331.5 563.0, 346.5 563.0, 264.0 563.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 414.0 563.0 C 331.5 563.0, 346.5 451.0, 264.0 451.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 414.0 563.0 C 331.5 563.0, 346.5 339.0, 264.0 339.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 778.0 395.0 C 495.3 395.0, 546.7 339.0, 264.0 339.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 885.0 464.0 L 885.0 438.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 778.0 507.0 C 695.5 507.0, 710.5 451.0, 628.0 451.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 885.0 576.0 L 885.0 438.0" fill="none" stroke="#5d6675" stroke-width="1.6" marker-end="url(#arrow-solid)" opacity="0.85" />
+<path d="M 1142.0 283.0 C 859.3 283.0, 910.7 451.0, 628.0 451.0" fill="none" stroke="#6a4c93" stroke-width="1.6" stroke-dasharray="2 4" marker-end="url(#arrow-dash)" opacity="0.8" />
+<rect x="962.1" y="291.5" width="90.0" height="15" rx="4" fill="#f7f8fa" opacity="0.92" />
+<text x="1007.1" y="302.5" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#6a4c93">nạp sao kê</text>
+<path d="M 1142.0 283.0 C 659.1 283.0, 746.9 451.0, 264.0 451.0" fill="none" stroke="#6a4c93" stroke-width="1.6" stroke-dasharray="2 4" marker-end="url(#arrow-dash)" opacity="0.8" />
+<rect x="650.0" y="358.0" width="106.0" height="15" rx="4" fill="#f7f8fa" opacity="0.92" />
+<text x="703.0" y="369.0" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#6a4c93">nạp danh mục</text>
+<path d="M 628.0 451.0 C 910.7 451.0, 859.3 619.0, 1142.0 619.0" fill="none" stroke="#6a4c93" stroke-width="1.6" stroke-dasharray="2 4" marker-end="url(#arrow-dash)" opacity="0.8" />
+<rect x="863.4" y="550.9" width="114.0" height="15" rx="4" fill="#f7f8fa" opacity="0.92" />
+<text x="920.4" y="561.9" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#6a4c93">thiếu/lệch mã</text>
+<path d="M 628.0 563.0 C 910.7 563.0, 859.3 619.0, 1142.0 619.0" fill="none" stroke="#6a4c93" stroke-width="1.6" stroke-dasharray="2 4" marker-end="url(#arrow-dash)" opacity="0.8" />
+<rect x="713.9" y="559.8" width="98.0" height="15" rx="4" fill="#f7f8fa" opacity="0.92" />
+<text x="762.9" y="570.8" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#6a4c93">mã lạ/trùng</text>
+<path d="M 992.0 395.0 C 1074.5 395.0, 1059.5 507.0, 1142.0 507.0" fill="none" stroke="#6a4c93" stroke-width="1.6" stroke-dasharray="2 4" marker-end="url(#arrow-dash)" opacity="0.8" />
+<rect x="1026.0" y="442.0" width="82.0" height="15" rx="4" fill="#f7f8fa" opacity="0.92" />
+<text x="1067.0" y="453.0" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#6a4c93">chờ duyệt</text>
+<path d="M 992.0 507.0 C 1074.5 507.0, 1059.5 395.0, 1142.0 395.0" fill="none" stroke="#6a4c93" stroke-width="1.6" stroke-dasharray="2 4" marker-end="url(#arrow-dash)" opacity="0.8" />
+<rect x="1018.0" y="442.0" width="98.0" height="15" rx="4" fill="#f7f8fa" opacity="0.92" />
+<text x="1067.0" y="453.0" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#6a4c93">tổng hợp kỳ</text>
+<path d="M 628.0 451.0 C 910.7 451.0, 859.3 395.0, 1142.0 395.0" fill="none" stroke="#6a4c93" stroke-width="1.6" stroke-dasharray="2 4" marker-end="url(#arrow-dash)" opacity="0.8" />
+<rect x="713.9" y="436.2" width="98.0" height="15" rx="4" fill="#f7f8fa" opacity="0.92" />
+<text x="762.9" y="447.2" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#6a4c93">tổng hợp kỳ</text>
+<rect x="50.0" y="296.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="50.0" y="296.0" width="214.0" height="26" rx="9" fill="#2a6fb0" />
+<rect x="50.0" y="309.0" width="214.0" height="13" fill="#2a6fb0" />
+<text x="60.0" y="313.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">schools</text>
+<text x="60.0" y="338.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="60.0" y="354.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">school_code UK</text>
+<text x="60.0" y="370.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">name</text>
+<rect x="50.0" y="408.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="50.0" y="408.0" width="214.0" height="26" rx="9" fill="#2a6fb0" />
+<rect x="50.0" y="421.0" width="214.0" height="13" fill="#2a6fb0" />
+<text x="60.0" y="425.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">students</text>
+<text x="60.0" y="450.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="60.0" y="466.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">student_code UK</text>
+<text x="60.0" y="482.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">school_id FK</text>
+<rect x="50.0" y="520.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="50.0" y="520.0" width="214.0" height="26" rx="9" fill="#2a6fb0" />
+<rect x="50.0" y="533.0" width="214.0" height="13" fill="#2a6fb0" />
+<text x="60.0" y="537.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">donors</text>
+<text x="60.0" y="562.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="60.0" y="578.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">acn_code UK</text>
+<rect x="50.0" y="632.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="50.0" y="632.0" width="214.0" height="26" rx="9" fill="#2a6fb0" />
+<rect x="50.0" y="645.0" width="214.0" height="13" fill="#2a6fb0" />
+<text x="60.0" y="649.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">student_supports</text>
+<text x="60.0" y="674.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="60.0" y="690.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">student_id FK</text>
+<text x="60.0" y="706.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">donor_id FK</text>
+<rect x="414.0" y="408.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="414.0" y="408.0" width="214.0" height="26" rx="9" fill="#d2601f" />
+<rect x="414.0" y="421.0" width="214.0" height="13" fill="#d2601f" />
+<text x="424.0" y="425.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">bank_transactions</text>
+<text x="424.0" y="450.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="424.0" y="466.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">direction</text>
+<text x="424.0" y="482.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">amount</text>
+<rect x="414.0" y="520.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="414.0" y="520.0" width="214.0" height="26" rx="9" fill="#d2601f" />
+<rect x="414.0" y="533.0" width="214.0" height="13" fill="#d2601f" />
+<text x="424.0" y="537.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">transaction_allocations</text>
+<text x="424.0" y="562.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="424.0" y="578.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">transaction_id FK</text>
+<text x="424.0" y="594.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">ne_code</text>
+<rect x="778.0" y="352.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="778.0" y="352.0" width="214.0" height="26" rx="9" fill="#146b45" />
+<rect x="778.0" y="365.0" width="214.0" height="13" fill="#146b45" />
+<text x="788.0" y="369.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">school_payment_requests</text>
+<text x="788.0" y="394.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="788.0" y="410.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">school_id FK</text>
+<text x="788.0" y="426.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">status</text>
+<rect x="778.0" y="464.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="778.0" y="464.0" width="214.0" height="26" rx="9" fill="#146b45" />
+<rect x="778.0" y="477.0" width="214.0" height="13" fill="#146b45" />
+<text x="788.0" y="481.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">disbursements</text>
+<text x="788.0" y="506.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="788.0" y="522.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">payment_request_id FK</text>
+<text x="788.0" y="538.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">transaction_id FK</text>
+<rect x="778.0" y="576.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="778.0" y="576.0" width="214.0" height="26" rx="9" fill="#146b45" />
+<rect x="778.0" y="589.0" width="214.0" height="13" fill="#146b45" />
+<text x="788.0" y="593.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">evidence_documents</text>
+<text x="788.0" y="618.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="788.0" y="634.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">payment_request_id FK</text>
+<text x="788.0" y="650.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">checksum_sha256</text>
+<rect x="1142.0" y="128.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="1142.0" y="128.0" width="214.0" height="26" rx="9" fill="#6a4c93" />
+<rect x="1142.0" y="141.0" width="214.0" height="13" fill="#6a4c93" />
+<text x="1152.0" y="145.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">roles</text>
+<text x="1152.0" y="170.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="1152.0" y="186.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">name UK</text>
+<rect x="1142.0" y="240.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="1142.0" y="240.0" width="214.0" height="26" rx="9" fill="#6a4c93" />
+<rect x="1142.0" y="253.0" width="214.0" height="13" fill="#6a4c93" />
+<text x="1152.0" y="257.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">import_runs</text>
+<text x="1152.0" y="282.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="1152.0" y="298.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">source_name</text>
+<text x="1152.0" y="314.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">imported_at</text>
+<rect x="1142.0" y="352.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="1142.0" y="352.0" width="214.0" height="26" rx="9" fill="#6a4c93" />
+<rect x="1142.0" y="365.0" width="214.0" height="13" fill="#6a4c93" />
+<text x="1152.0" y="369.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">report_periods</text>
+<text x="1152.0" y="394.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="1152.0" y="410.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">period_label UK</text>
+<text x="1152.0" y="426.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">status</text>
+<rect x="1142.0" y="464.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="1142.0" y="464.0" width="214.0" height="26" rx="9" fill="#6a4c93" />
+<rect x="1142.0" y="477.0" width="214.0" height="13" fill="#6a4c93" />
+<text x="1152.0" y="481.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">approval_tasks</text>
+<text x="1152.0" y="506.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="1152.0" y="522.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">maker</text>
+<text x="1152.0" y="538.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">checker</text>
+<rect x="1142.0" y="576.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="1142.0" y="576.0" width="214.0" height="26" rx="9" fill="#6a4c93" />
+<rect x="1142.0" y="589.0" width="214.0" height="13" fill="#6a4c93" />
+<text x="1152.0" y="593.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">exception_queue</text>
+<text x="1152.0" y="618.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="1152.0" y="634.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">severity</text>
+<text x="1152.0" y="650.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">status</text>
+<rect x="1142.0" y="688.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="1142.0" y="688.0" width="214.0" height="26" rx="9" fill="#6a4c93" />
+<rect x="1142.0" y="701.0" width="214.0" height="13" fill="#6a4c93" />
+<text x="1152.0" y="705.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">data_quality_issues</text>
+<text x="1152.0" y="730.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="1152.0" y="746.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">severity</text>
+<text x="1152.0" y="762.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">issue_code</text>
+<rect x="1142.0" y="800.0" width="214.0" height="86.0" rx="9" fill="#ffffff" stroke="#e1e5eb" stroke-width="1" />
+<rect x="1142.0" y="800.0" width="214.0" height="26" rx="9" fill="#6a4c93" />
+<rect x="1142.0" y="813.0" width="214.0" height="13" fill="#6a4c93" />
+<text x="1152.0" y="817.5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" font-weight="700" fill="#ffffff">audit_events</text>
+<text x="1152.0" y="842.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#1c2330">id PK</text>
+<text x="1152.0" y="858.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">event_type</text>
+<text x="1152.0" y="874.0" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#5d6675">prev_hash→hash</text>
+<text x="50" y="936.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11.5" fill="#5d6675">Tiền vào → bank_transactions → transaction_allocations (chia theo mã NE). Tiền ra → school_payment_requests → disbursements → evidence_documents. Xem docs/ERD_VA_LUONG_LOI.md để biết luồng lỗi theo từng gate.</text>
+</svg>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<title>Quỹ Minh Bạch Tài Chính · Bảng điều khiển minh bạch tài chính</title>
+<meta name="description" content="Đối soát tiền vào, phân bổ theo mã NE, hàng đợi ngoại lệ và audit log cho Quỹ Minh Bạch Tài Chính." />
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="demo-strip">Bản demo tĩnh trên GitHub Pages. Số liệu lấy từ <code>du_lieu_mau/sao_ke_mau.csv</code> (20 giao dịch giả lập), không phải số liệu thật của Quỹ.</div>
+
+<a class="skip" href="#main">Bỏ qua điều hướng</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <img class="logo" src="assets/logo.svg" alt="" width="36" height="36" />
+    <div class="brand">
+      <strong>Quỹ Minh Bạch Tài Chính</strong>
+      <span>Bảng điều khiển minh bạch tài chính · Topic 4</span>
+    </div>
+    <span class="pill pill-live" id="health">Đang kết nối…</span>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Honesty banner. This dashboard reports inferred numbers, and saying so
+       on the first screen is the whole point of the project. -->
+  <section class="banner" role="note">
+    <strong>Số liệu suy ra, không phải số liệu Quỹ đã xác nhận.</strong>
+    Quỹ công bố tổng theo kỳ; số tiền <em>theo từng mã NE</em> ở đây do hệ thống
+    tính ra từ nội dung chuyển khoản. Mỗi con số đều gắn nhãn cách tính.
+    Các KPI thu/chi bên dưới là <strong>dòng tiền ngân hàng gộp</strong>, chưa phải
+    doanh thu/chi phí kế toán nếu chưa có chứng từ phân loại.
+  </section>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Tiền vào có truy được về từng em không?</h1>
+      <p>
+        Hệ thống đọc sao kê ngân hàng Quỹ tự công bố, tách mã NE khỏi nội dung
+        chuyển khoản, chia số tiền về từng mã và giữ nhật ký có thể phát hiện sửa đổi.
+      </p>
+    </div>
+    <img src="assets/hero.svg" alt="" width="520" height="300" loading="lazy" />
+  </section>
+
+  <!-- KPI strip -->
+  <section class="kpis" id="kpis" aria-busy="true">
+    <article class="kpi kpi-money">
+      <span class="kpi-label">Dòng tiền vào</span>
+      <strong id="kpi-inbound">—</strong>
+      <small id="kpi-inbound-sub">—</small>
+    </article>
+    <article class="kpi kpi-money">
+      <span class="kpi-label">Dòng tiền ra</span>
+      <strong id="kpi-outbound">—</strong>
+      <small id="kpi-outbound-sub">—</small>
+    </article>
+    <article class="kpi">
+      <span class="kpi-label">Mã NE phân bổ được</span>
+      <strong id="kpi-codes">—</strong>
+      <small id="kpi-codes-sub">—</small>
+    </article>
+    <article class="kpi kpi-warn">
+      <span class="kpi-label">Cần rà soát</span>
+      <strong id="kpi-review">—</strong>
+      <small id="kpi-review-sub">—</small>
+    </article>
+  </section>
+
+  <!-- Integrity: the invariant an auditor cares about -->
+  <section class="card" id="integrity-card">
+    <div class="card-head">
+      <h2>Đối soát: các phần phải bằng tổng</h2>
+      <span class="pill" id="integrity-pill">—</span>
+    </div>
+    <p class="muted" id="integrity-note">—</p>
+    <div class="table-wrap">
+      <table class="tight">
+        <tbody id="integrity-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Coverage -->
+  <section class="card">
+    <div class="card-head">
+      <h2>Độ phủ: bao nhiêu tiền vào gắn được mã?</h2>
+      <span class="pill" id="coverage-pill">—</span>
+    </div>
+    <div class="bar" role="img" aria-label="Tỷ lệ tiền vào đã phân bổ" id="coverage-bar">
+      <span class="bar-fill" id="coverage-fill"></span>
+    </div>
+    <p class="muted" id="coverage-note">—</p>
+  </section>
+
+  <!-- Search -->
+  <section class="card">
+    <div class="card-head">
+      <h2>Tra cứu</h2>
+    </div>
+    <form class="search" id="search-form" autocomplete="off">
+      <label class="sr-only" for="q">Tìm mã NE, mã ACN hoặc mã giao dịch</label>
+      <input
+        id="q"
+        name="q"
+        type="search"
+        inputmode="search"
+        placeholder="NE05517 · ACN02497 · VNCK.989657"
+        maxlength="64"
+      />
+      <button type="submit">Tìm</button>
+    </form>
+    <div class="filters">
+      <label>Hướng
+        <select id="f-direction">
+          <option value="">Tất cả</option>
+          <option value="inbound">Tiền vào</option>
+          <option value="outbound">Tiền ra</option>
+        </select>
+      </label>
+      <label>Trạng thái
+        <select id="f-status">
+          <option value="">Tất cả</option>
+          <option value="matched">matched</option>
+          <option value="parsed">parsed</option>
+          <option value="needs_review">needs_review</option>
+          <option value="unclassified">unclassified</option>
+        </select>
+      </label>
+      <label>Số dòng
+        <select id="f-limit">
+          <option value="25">25</option>
+          <option value="50" selected>50</option>
+          <option value="100">100</option>
+        </select>
+      </label>
+    </div>
+    <p class="muted small" id="result-note"></p>
+    <div id="results"></div>
+  </section>
+
+  <!-- Lineage: one transaction or one code, traced end to end -->
+  <section class="drawer" id="drawer" hidden>
+    <div class="drawer-inner">
+      <button class="drawer-close" id="drawer-close" aria-label="Đóng">×</button>
+      <div id="drawer-body"></div>
+    </div>
+  </section>
+
+  <!-- Exceptions -->
+  <section class="card">
+    <div class="card-head">
+      <h2>Hàng đợi ngoại lệ</h2>
+      <span class="pill" id="exc-pill">—</span>
+    </div>
+    <p class="muted small">
+      Ngoại lệ được gộp theo nhóm kèm số lượng và giá trị, không phải mỗi dòng một
+      cảnh báo. Một hàng đợi 200.000 dòng là một kiểm soát không hoạt động được.
+    </p>
+    <div id="exceptions"></div>
+  </section>
+
+  <!-- Audit -->
+  <section class="card">
+    <div class="card-head">
+      <h2>Nhật ký kiểm toán</h2>
+      <span class="pill" id="audit-pill">—</span>
+    </div>
+    <p class="muted small">
+      Ứng dụng chặn sửa/xoá thông thường; mỗi sự kiện còn lưu hash của sự kiện
+      trước để phát hiện thay đổi trái phép. Đây là tamper-evident, không phải
+      bất biến tuyệt đối trước người sở hữu toàn quyền cơ sở dữ liệu.
+    </p>
+    <div id="audit"></div>
+  </section>
+
+  <footer class="foot">
+    <p id="foot-source">—</p>
+    <p class="muted small" id="foot-privacy">—</p>
+    <details class="muted small" id="foot-missing-wrap">
+      <summary>Dữ liệu còn thiếu</summary>
+      <ul id="foot-missing"></ul>
+    </details>
+  </footer>
+
+</main>
+
+<script src="demo-shim.js"></script>
+<script src="app.js" defer></script>
+</body>
+</html>

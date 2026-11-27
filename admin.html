@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<title>Quỹ Minh Bạch Tài Chính · Quản trị đối soát</title>
+<meta name="description" content="Hàng đợi ngoại lệ, tra cứu mã NE và trạng thái toàn vẹn dữ liệu cho Quỹ Minh Bạch Tài Chính." />
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+<link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+<div class="demo-strip">Bản demo tĩnh trên GitHub Pages. Số liệu lấy từ <code>du_lieu_mau/sao_ke_mau.csv</code> (20 giao dịch giả lập), không phải số liệu thật của Quỹ.</div>
+
+<a class="skip" href="#main">Bỏ qua điều hướng</a>
+
+<div class="app">
+
+  <aside class="side">
+    <div class="side-brand">
+      <img src="assets/logo.svg" alt="" width="30" height="30" />
+      <div>
+        <strong>Minh Bạch Tài Chính</strong>
+        <span>Quản trị</span>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <a href="#/overview" data-view="overview">Tổng quan</a>
+      <a href="#/queue" data-view="queue">Hàng đợi</a>
+      <a href="#/lookup" data-view="lookup">Tra cứu</a>
+      <a href="#/schema" data-view="schema">Sơ đồ CSDL</a>
+    </nav>
+
+    <div class="side-foot">
+      <a href="index.html">← Bảng công khai</a>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+
+    <header class="page-head">
+      <div>
+        <h1 id="page-title">Tổng quan</h1>
+        <p id="page-sub">Việc đang chờ xử lý và tình trạng dữ liệu.</p>
+      </div>
+      <div class="search-wrap" id="search-wrap">
+        <form id="search-form" class="search" role="search">
+          <label class="sr-only" for="q">Mã cần tra cứu</label>
+          <input id="q" name="q" type="search" inputmode="text" autocomplete="off"
+                 spellcheck="false" maxlength="64"
+                 placeholder="Mã NE, ACN hoặc số tham chiếu"
+                 role="combobox" aria-expanded="false" aria-autocomplete="list"
+                 aria-controls="search-suggest" />
+          <button type="submit">Tra</button>
+        </form>
+        <ul id="search-suggest" class="suggest" role="listbox" hidden></ul>
+      </div>
+    </header>
+
+    <!-- ---------------------------------------------------------- overview -->
+    <section id="view-overview" class="view">
+      <div class="metrics" id="metrics"></div>
+      <p class="asof" id="asof"></p>
+
+      <!-- Visual summary right after the headline numbers: these three charts
+           are the fastest way to see the shape of the data before drilling
+           into the action queue below. -->
+      <div class="grid-2">
+        <section class="card">
+          <div class="card-head">
+            <h2>Luồng tiền</h2>
+            <p class="sub">Mỗi dòng là % trên tổng tiền vào/ra — số suy ra, xem footer.</p>
+          </div>
+          <div class="chart-layout">
+            <div class="chart-main">
+              <div id="flow-axis"></div>
+              <div id="flow-in" class="meter-group"></div>
+              <div id="flow-out" class="meter-group meter-group-tight"></div>
+            </div>
+            <aside id="flow-conclusion" class="chart-conclusion"></aside>
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-head">
+            <h2>Ngoại lệ đang mở, theo mức độ</h2>
+            <p class="sub">Từ <code>exception_queue</code>, xếp từ nghiêm trọng nhất.</p>
+          </div>
+          <div class="chart-layout">
+            <div class="chart-main">
+              <div id="severity-axis"></div>
+              <div id="severity" class="severity"></div>
+            </div>
+            <aside id="severity-conclusion" class="chart-conclusion"></aside>
+          </div>
+        </section>
+      </div>
+
+      <div class="grid-2">
+        <section class="card">
+          <div class="card-head">
+            <h2>Cần xử lý</h2>
+            <p class="sub">Bấm một dòng để mở danh sách.</p>
+          </div>
+          <div id="queue-list" class="queue"></div>
+        </section>
+        <section class="card">
+          <div class="card-head">
+            <h2>Tiền vào chưa gán mã, theo năm</h2>
+            <p class="sub">Di chuột hoặc focus vào một cột để xem số chính xác.</p>
+          </div>
+          <div id="years" class="years-chart"></div>
+        </section>
+      </div>
+
+      <div class="grid-2 grid-2-wide">
+        <section class="card">
+          <div class="card-head">
+            <h2>Giao dịch gần đây</h2>
+            <p class="sub">8 dòng mới nhất. Nội dung chuyển khoản thô không hiển thị.</p>
+          </div>
+          <div class="table-wrap">
+            <table class="data recent" id="recent-table">
+              <thead><tr>
+                <th>Ngày</th><th>Mã giao dịch</th><th class="num">Số tiền</th><th>Mã tách được</th><th>Trạng thái</th>
+              </tr></thead>
+              <tbody id="recent-body"><tr><td colspan="5" class="muted">Đang tải…</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-head">
+            <h2>Tình trạng hệ thống</h2>
+            <p class="sub">Dữ liệu có đang được nạp và ghi đúng không.</p>
+          </div>
+          <div id="status" class="status"></div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------- queue -->
+    <section id="view-queue" class="view" hidden>
+      <div class="card">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <label class="field">
+              <span>Nguyên nhân</span>
+              <select id="bucket-select"></select>
+            </label>
+            <label class="field" id="year-field">
+              <span>Năm</span>
+              <select id="year-select"></select>
+            </label>
+          </div>
+        </div>
+        <p class="toolbar-count" id="queue-count"></p>
+
+        <div class="table-wrap">
+          <table class="data" id="queue-table">
+            <thead id="queue-head"></thead>
+            <tbody id="queue-body"></tbody>
+          </table>
+        </div>
+
+        <div class="table-foot">
+          <span id="queue-range" class="muted" aria-live="polite"></span>
+          <button type="button" id="more-btn" class="btn" hidden>Xem thêm</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------ lookup -->
+    <section id="view-lookup" class="view" hidden>
+      <p class="hint" id="search-hint">
+        Nhập mã NE (có hoặc không có hậu tố S/T), mã ACN, hoặc số tham chiếu.
+      </p>
+      <div id="result" class="result" hidden aria-live="polite"></div>
+    </section>
+
+    <!-- ------------------------------------------------------------ schema -->
+    <section id="view-schema" class="view" hidden>
+      <section class="card">
+        <div class="card-head">
+          <h2>16 bảng, nhóm theo luồng tiền</h2>
+          <p class="sub">
+            Liền = khóa ngoại thật trong <code>schema.py</code>. Đứt = luồng nghiệp vụ
+            (nạp dữ liệu, phát sinh ngoại lệ, chờ duyệt, tổng hợp kỳ) — không có khóa ngoại.
+          </p>
+        </div>
+        <div class="schema-wrap">
+          <img src="assets/db-schema.svg" width="1406" height="950"
+               alt="Sơ đồ CSDL: 4 vùng — dữ liệu tham chiếu, giao dịch ngân hàng, đối soát &amp; giải ngân,
+                    quản trị &amp; giám sát — với khóa ngoại thật và luồng nghiệp vụ nối giữa chúng." />
+        </div>
+        <p class="hint">
+          Sinh ra từ <code>schema.py</code> (phiên bản 2.0). Xem
+          <code>docs/ERD_VA_LUONG_LOI.md</code> để biết luồng lỗi theo từng gate đối soát.
+        </p>
+      </section>
+    </section>
+
+  </main>
+</div>
+
+<footer class="foot">
+  Số tiền theo từng mã NE là <strong>số suy ra</strong> từ nội dung chuyển khoản,
+  không phải số liệu Quỹ đã xác nhận. Nội dung sao kê thô và số tài khoản không
+  được trả ra qua API này.
+</footer>
+
+<script src="demo-shim.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
